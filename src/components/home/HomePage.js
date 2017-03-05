@@ -1,14 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 class HomePage extends React.Component {
     render() {
         return(
             <div className="jumbotron">
                 <h1>Apollo Client BoilerPlate</h1>
+                {this.props.data.Trainer.name}
             </div>
         );
     }
 }
 
-export default HomePage;
+const Query = gql`query TrainerQuery {
+  Trainer(name: "Eduardo Pedroso") {
+    name
+  }
+}`
+
+export default graphql(Query)(HomePage);

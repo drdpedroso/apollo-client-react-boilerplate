@@ -1,20 +1,23 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import configureStore from './store/configureStore';
-import { Provider } from 'react-redux';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { Router, browserHistory } from 'react-router';
+import { ApolloProvider } from 'react-apollo';
 import routes from './routes';
-import {loadCourses} from './actions/courseActions';
-import './styles/style.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import gql from 'graphql-tag'
 
-const store = configureStore();
-store.dispatch(loadCourses());
+import './styles/style.css';
+
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+       uri: 'https://api.graph.cool/simple/v1/cizt2ung1yd0z01279dwyobe7'
+  }),
+});
 
 render(
-    <Provider store={store}>
+    <ApolloProvider client={client}>
         <Router history={browserHistory} routes={routes} />
-    </Provider>,    
+    </ApolloProvider>,    
     document.getElementById('app')
 );

@@ -11,7 +11,7 @@ import './styles/style.css';
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
-       uri: 'https://api.graph.cool/simple/v1/cizt2ung1yd0z01279dwyobe7'
+       uri: 'https://du0blsjf97.execute-api.us-west-2.amazonaws.com/dev/graphql'
   }),
 });
 

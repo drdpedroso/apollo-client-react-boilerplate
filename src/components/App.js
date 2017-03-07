@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import Header from './common/Header';
+import AdminSideBar from './common/AdminSideBar'
 
 class App extends React.Component {
     render(){
         return(
-            <div className="container-fluid">
-                <Header />
-                {this.props.children}
+            <div style={{flexGrow: 0,flexBasis: 'content'}}>
+                { this.props.children}
             </div>
         );
     }
